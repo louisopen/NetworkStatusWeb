@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Sys Info{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="page-header">
+        <h1>系统信息</h1>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <td>主机名</td>
+                <td>{{ sys_name }}</td>
+            </tr>
+            <tr>
+                <td>内核名称</td>
+                <td>{{ kernel_name }}</td>
+            </tr>
+            <tr>
+                <td>发行版本号</td>
+                <td>{{ kernel_no }}</td>
+            </tr>
+            <tr>
+                <td>内核版本</td>
+                <td>{{ kernel_version }}</td>
+            </tr>
+            <tr>
+                <td>系统架构</td>
+                <td>{{ sys_framework }}</td>
+            </tr>
+            <tr>
+                <td>现在时间</td>
+                <td>{{ now_time }}</td>
+            </tr>
+            <tr>
+                <td>开机时间</td>
+                <td>{{ boot_time }}</td>
+            </tr>
+            <tr>
+                <td>运行时间</td>
+                <td>{{ up_time }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

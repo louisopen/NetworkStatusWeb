@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Process Info{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="{{ url_for("static", filename="js/auto-refresh.js") }}"></script>
+{% endblock %}
+{% block content %}
+    <div class="page-header">
+        <a {% if part == 'process' %}id="display"{% endif %}
+           href="{{ url_for('main.process', pid=pid, part='process') }}">进程</a>
+        <a {% if part == 'memory' %}id="display"{% endif %}
+           href="{{ url_for('main.process', pid=pid, part='memory') }}">进程内存</a>
+        <a {% if part == 'threads' %}id="display"{% endif %}
+           href="{{ url_for('main.process', pid=pid, part='threads') }}">线程</a>
+        <a {% if part == 'files' %}id="display"{% endif %} href="{{ url_for('main.process', pid=pid, part='files') }}">文件</a>
+        <a {% if part == 'connections' %}id="display"{% endif %}
+           href="{{ url_for('main.process', pid=pid, part='connections') }}">连接</a>
+        <a {% if part == 'environ' %}id="display"{% endif %}
+           href="{{ url_for('main.process', pid=pid, part='environ') }}">环境</a>
+        <a {% if part == 'children' %}id="display"{% endif %}
+           href="{{ url_for('main.process', pid=pid, part='children') }}">子进程</a>
+        <a {% if part == 'limits' %}id="display"{% endif %}
+           href="{{ url_for('main.process', pid=pid, part='limits') }}">资源限制</a>
+    </div>
+    <div>
+        {% block process %}{% endblock %}
+    </div>
+{% endblock %}

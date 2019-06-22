@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}CPU Info{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="page-header">
+        <a {% if not chart %}id="display"{% endif %} href="{{ url_for('main.cpu_info') }}">CPU 信息</a>
+        <a {% if chart == 'line' %}id="display"{% endif %} href="{{ url_for('main.cpu_info', chart='line') }}">CPU 折线图</a>
+        <a {% if chart == 'pie' %}id="display"{% endif %} href="{{ url_for('main.cpu_info', chart='pie') }}">CPU 饼图</a>
+    </div>
+    <div>
+        {% block cpu_info %}{% endblock %}
+    </div>
+{% endblock %}

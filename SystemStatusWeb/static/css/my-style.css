@@ -1,0 +1,26 @@
+table tr:nth-child(odd) {
+    background: #cccccc;
+}
+
+.table-div table tr:first-child {
+    background: #c0a16b;
+}
+
+.table-div table tr:first-child a {
+    color: #333333;
+}
+
+#display {
+    color: #000000;
+}
+
+.page-header a {
+    color: #cccccc;
+    font-size: 36px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.arrow-style {
+    color: #ffffff;
+}
