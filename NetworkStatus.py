@@ -2,7 +2,7 @@
 #coding:utf-8 
 #
 #pip install psutil
-#
+
 import time
 import sys
 try:
@@ -60,8 +60,13 @@ while True:
     time.sleep(10)      #每10秒鐘運行此程序
     try:
         ip_file = open('networkstatus.txt','a')
-        key_info, net_in, net_out = get_rate(get_key)   #每秒收送速率MB
+
         #key_info, net_in, net_out = get_key()          #取出收送累積總量Bytes
+        #ip_file.write(time.strftime("[%Y-%m-%d %H:%M:%S]")+'\n')
+        #msg='''Interface: {}\nReceived: {} Byte\nTransmit: {} Byte\n'''.format( key, net_in.get(key), net_out.get(key))
+        #ip_file.write(msg)
+
+        key_info, net_in, net_out = get_rate(get_key)   #每秒收送速率MB
         for key in key_info:                #各網路介面(區域網路2,bluebooth,WiFi,vEthernet)
         
             if net_in.get(key) >2 or net_out.get(key) >2:  #2MB/unit
@@ -69,7 +74,7 @@ while True:
                 msg='''Interface: {}\nReceived: {} MB/s\nTransmit: {} MB/s\n'''.format( key, net_in.get(key), net_out.get(key))
                 ip_file.write(msg)
 
-                msg = get_process_info()    #目前運行程序/local:IP/remote:IP
+                msg = get_process_info()    #目前運行程序/local:IP/remote:IP  格式與上述不同
                 ip_file.write(msg)
                 ip_file.write('\n')
             #msg='''Interface = {}\nReceived = {} MB/s\nTransmit = {} MB/s\n'''.format( key, net_in.get(key), net_out.get(key))  #for get_rate
